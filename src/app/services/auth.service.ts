@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Post } from './post.service';
+import { environment } from '../../environments/environment';
 
 export interface AuthResponse{
   token:string
@@ -13,7 +14,7 @@ export interface AuthResponse{
 })
 export class AuthService {
 
-  apiURL = "http://localhost:3000/api";
+  apiURL = `${environment.apiUrl}/api`;
   token : any = ""
 
   constructor(private http: HttpClient,private router:Router) { }

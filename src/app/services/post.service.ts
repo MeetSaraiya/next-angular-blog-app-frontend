@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 export interface Post{
   title:string,
@@ -12,7 +13,7 @@ export interface Post{
 })
 export class PostService {
 
-  url :string = "http://localhost:3000/api/posts";
+  url :string = `${environment.apiUrl}/api/posts`;
 
   constructor(private http:HttpClient) { }
 
