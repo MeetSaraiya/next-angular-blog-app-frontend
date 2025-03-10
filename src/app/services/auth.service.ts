@@ -20,7 +20,7 @@ export class AuthService {
   constructor(private http: HttpClient,private router:Router) { }
 
   register(username: string, password: string) {
-    console.log(username,password)
+    // console.log(username,password)
     return this.http.post(`${this.apiURL}/auth/register`,{username,password});
   }
 
