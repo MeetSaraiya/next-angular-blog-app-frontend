@@ -31,7 +31,7 @@ export class RegisterComponent {
       } ,
       error: (err) => {
         console.error("from Register", err), 
-        alert('Registration failed: ' + (err.error?.message || "Unknown error"))
+        alert('Registration failed: ' + (err.error?.error || "Unknown error"))
       }
     }
     );
