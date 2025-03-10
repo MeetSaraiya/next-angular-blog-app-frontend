@@ -57,12 +57,17 @@ export class DashboardComponent implements OnInit {
 
       this.postService.updatePost(postObj.id, { content: updatedContent }).subscribe(
         {
-          next: (data) => console.log(data),
+          next: () => {
+          postObj.content=updatedContent;
+          },
           error(err) {
-            console.error(err);
+            alert("update error "+err);
+            console.error(err.error);
           },
         }
       )
+      // this.loadPosts()            
+
 
     }
   }

@@ -13,14 +13,14 @@ export interface AuthResponse{
 })
 export class AuthService {
 
-  apiURL = "https://localhost:3000/api";
+  apiURL = "http://localhost:3000/api";
   token : any = ""
 
   constructor(private http: HttpClient,private router:Router) { }
 
   register(username: string, password: string) {
     console.log(username,password)
-    return this.http.post<Post>(`${this.apiURL}/auth/register`,{username,password});
+    return this.http.post(`${this.apiURL}/auth/register`,{username,password});
   }
 
   

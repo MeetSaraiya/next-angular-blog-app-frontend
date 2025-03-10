@@ -4,11 +4,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     {path:"login",component:LoginComponent},
     {path:"register",component:RegisterComponent},
-    {path:"dashboard",component:DashboardComponent},
+    {path:"dashboard",component:DashboardComponent,canActivate:[authGuard]},
     {path:"",redirectTo:"dashboard",pathMatch:"full"},
     {path:"**",redirectTo:"dashboard",pathMatch:"full"},
 ];

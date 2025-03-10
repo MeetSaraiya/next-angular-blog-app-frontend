@@ -3,16 +3,16 @@
     <span class="text-xl font-semibold mx-5">MyApp</span>
     <div>
       @if (!authenticated) {
-        <a  class="mr-4  cursor-pointer hover:bg-blue-600 hover:text-white hover:border-2 rounded-3xl p-2" routerLink="/login" >Login</a>
+        <a  class="mr-4  cursor-pointer hover:bg-blue-600 hover:text-white hover:border-2 rounded-3xl p-2" routerLink="/login" (click)="gotoLogin()">Login</a>
       }
       @if (!authenticated) {
-        <a class="mr-4 cursor-pointer hover:bg-blue-600 hover:text-white hover:border-2 rounded-3xl p-2" routerLink="/register">Register</a>
+        <a class="mr-4 cursor-pointer hover:bg-blue-600 hover:text-white hover:border-2 rounded-3xl p-2"  (click)="gotoReg()">Register</a>
       }
       @if (authenticated) {
-        <a class="mr-4 cursor-pointer hover:bg-blue-600 hover:text-white hover:border-2 rounded-3xl p-2" routerLink="/dashboard">Dashboard</a>
+        <a class="mr-4 cursor-pointer  hover:bg-blue-600 hover:text-white hover:border-2 rounded-3xl p-2" routerLink="/dashboard" >Dashboard</a>
       }
       @if (authenticated) {
-        <button class="bg-red-500 px-3 py-1 rounded">Logout</button>
+        <button class="bg-red-500 px-3 py-1 rounded cursor-pointer" (click)="logout()">Logout</button>
       }
       
     </div>

@@ -12,7 +12,7 @@ export interface Post{
 })
 export class PostService {
 
-  url :string = "https://localhost:3000/api/posts";
+  url :string = "http://localhost:3000/api/posts";
 
   constructor(private http:HttpClient) { }
 

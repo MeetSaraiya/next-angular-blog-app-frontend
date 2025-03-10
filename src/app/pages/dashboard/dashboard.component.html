@@ -7,7 +7,7 @@
      
     <div class="p-4 mb-3 border rounded">
         <h3 class="text-xl font-semibold">{{post.title}}</h3>
-        <p>{{post.title}}</p>
+        <p>{{post.content}}</p>
         <button class="text-blue-400 mr-2" (click)="editPost(post)">Edit</button>
         <button class="text-red-600" (click)="deletePost(post.id)">Delete</button>
     </div>
@@ -15,7 +15,7 @@
 }
 
 <h3 class="text-lg font-bold mb-2">Add new Post</h3>
-<form [formGroup]="postForm">
+<form [formGroup]="postForm" (submit)="addPost(postForm)">
     <input type="text" name="title" id="title" required class="block w-full mb-2 p-2 border rounded-xl" formControlName="title" placeholder="Title">
     <textarea name="content" id="content" placeholder="Content" rows="3" required class="block w-full mb-2 p-2 border rounded-xl" formControlName="content"></textarea>
     <button type="submit" [disabled]="!postForm.valid" class="bg-blue-500 text-white px-4 py-2  rounded-xl">Create Post</button>

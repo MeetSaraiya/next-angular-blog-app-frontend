@@ -23,11 +23,19 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    this.auth.register(this.formG.value.username || "empty", this.formG.value.password || "empty").subscribe({
-      next: (data) => { if (data) { alert("user registered"), this.router.navigateByUrl("/login") } },
-      error: (error) => console.error("from Register", error)
+    if(this.formG.valid){
+    this.auth.register(this.formG.value.username!, this.formG.value.password!).subscribe({
+      next: () => { 
+         alert("user registered"), 
+        this.router.navigateByUrl("/login") 
+      } ,
+      error: (err) => {
+        console.error("from Register", err), 
+        alert('Registration failed: ' + (err.error?.message || "Unknown error"))
+      }
     }
     );
+  }
   }
 
 }

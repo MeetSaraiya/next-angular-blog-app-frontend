@@ -21,4 +21,10 @@ export class NavbarComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+  gotoReg(){
+    this.router.navigate(['/register']);
+  }
+  gotoLogin(){
+    this.router.navigate(['/login']);
+  }
 }
