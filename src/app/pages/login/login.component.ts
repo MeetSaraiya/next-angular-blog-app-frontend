@@ -11,8 +11,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
  form = new FormGroup({
-    username: new FormControl('', [Validators.required,Validators.minLength(4)]),
-    password: new FormControl('', [Validators.required,Validators.minLength(4)]),
+    username: new FormControl('', [Validators.required,Validators.minLength(1)]),
+    password: new FormControl('', [Validators.required,Validators.minLength(1)]),
   });
 
   clearForm() {
@@ -25,17 +25,21 @@ export class LoginComponent {
 
   onSubmit()
   {
-    this.auth.login(this.form.value.username || "empty", this.form.value.password || "empty").subscribe({
-      next: (data) => {
-        this.auth.saveToken(data.token);
-        this.router.navigate(['/dashboard']);
-      },
-      error: (err) => {
-        console.error("from login", err);
-        alert("login failed"+(err.error?.message) || "check credentials")
+    if(this.form.valid){
+      this.auth.login(this.form.value.username!, this.form.value.password!).subscribe({
+        next: (data) => {
+          this.auth.saveToken(data.token);
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          console.error("from login", err);
+          alert("login failed"+(err.error?.error) || "check credentials")
+        }
+  
       }
-
+      );
+    }else{
+      alert("please fill the credentials")
     }
-    );
   }
 }
